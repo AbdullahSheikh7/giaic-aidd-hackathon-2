@@ -1,50 +1,75 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.0.0 → 1.0.0 (initial version)
+- List of modified principles:
+  - PRINCIPLE_1_NAME → Python-First Development
+  - PRINCIPLE_2_NAME → CLI Interface Standard
+  - PRINCIPLE_3_NAME → Test-First (NON-NEGOTIABLE)
+  - PRINCIPLE_4_NAME → In-Memory Storage Pattern
+  - PRINCIPLE_5_NAME → UV Package Management
+- Added sections: Development Standards, Quality Assurance
+- Removed sections: None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md ✅ updated
+  - .specify/templates/spec-template.md ✅ updated
+  - .specify/templates/tasks-template.md ✅ updated
+  - README.md ⚠ pending
+- Follow-up TODOs: None
+-->
+
+# Todo App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Python-First Development
+All features and functionality must be implemented using Python 3.13+ as the primary language. Code must follow Python best practices, maintain clean architecture with separation of concerns between models, services, and interfaces. All new features must be implemented as extensions to existing Python classes and modules following the established patterns in src/todo_app.py.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### CLI Interface Standard
+Every core functionality must be accessible through the command-line interface. The CLI must follow standard input/output patterns with clear user prompts, proper error handling, and consistent formatting. All user interactions must be intuitive and follow the menu-driven approach established in src/main.py with appropriate validation and feedback.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Test-First (NON-NEGOTIABLE)
+All new features must have corresponding tests written before implementation. Tests must be added to test_todo.py following the established pattern of independent functionality verification. The red-green-refactor cycle must be followed with all tests passing before code is considered complete. Test coverage must include all basic functionality: Add Task, Delete Task, Update Task, View Task List, and Mark as Complete.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### In-Memory Storage Pattern
+All data persistence must follow the in-memory storage pattern established in the TodoApp class. No external databases or persistent storage files should be introduced without explicit architectural approval. The application state must remain consistent with the existing Task model and TodoApp collection management approach.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### UV Package Management
+All dependencies must be managed using UV package manager as specified in pyproject.toml. No other package managers (pip, conda) should be used for dependency management. All development and runtime dependencies must be explicitly declared in pyproject.toml with appropriate version constraints.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Standards
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Code Quality Requirements
+- All code must follow Python PEP 8 style guidelines
+- Type hints must be used for all function parameters and return values
+- Comprehensive docstrings required for all classes and methods
+- Error handling must be implemented consistently throughout the codebase
+- No hardcoded values - use constants where appropriate
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+### Architecture Constraints
+- Maintain separation between models (Task class) and business logic (TodoApp class)
+- CLI interface must remain separate from core application logic
+- Follow existing patterns for method naming and class structure
+- Preserve backward compatibility for existing functionality
+- All new features must integrate seamlessly with existing menu system
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Quality Assurance
+
+### Code Review Process
+- All pull requests must include updated tests for new functionality
+- Code must pass all existing tests before merging
+- Changes must maintain the existing user experience unless explicitly specified
+- Performance impact must be considered for all changes
+- Security implications must be evaluated for any new input/output operations
+
+### Testing Requirements
+- All basic functionality tests must pass (Add, Delete, Update, View, Complete)
+- New features must include both positive and negative test cases
+- Error conditions must be tested and handled appropriately
+- Integration between components must be verified
+- User input validation must be thoroughly tested
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+All development must comply with this constitution. Amendments require documentation of the change, justification for deviation from existing principles, and approval from project maintainers. All pull requests must verify compliance with these principles before merging. The constitution supersedes any conflicting practices or patterns established in the codebase.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-01-02 | **Last Amended**: 2026-01-02
