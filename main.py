@@ -1,4 +1,4 @@
-from todo_app import TodoApp
+from src.todo_app import TodoApp
 import sys
 
 
